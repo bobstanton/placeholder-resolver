@@ -1,0 +1,1 @@
+{"version":3,"file":"SimpleContextProvider.d.ts","sourceRoot":"","sources":["../src/SimpleContextProvider.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,SAAS,CAAC;AAE1C,qBAAa,qBAAsB,YAAW,eAAe;IAC/C,OAAO,CAAC,QAAQ,CAAC,OAAO;gBAAP,OAAO,EAAE,MAAM,CAAC,MAAM,EAAE,OAAO,CAAC;IAE7D,kBAAkB,IAAI,MAAM,CAAC,MAAM,EAAE,OAAO,CAAC;CAG9C"}
