@@ -90,7 +90,8 @@ const resolver = new PlaceholderResolver(provider, {
 | `month`         | Current month (1-12)                  |
 | `day`           | Current day of month                  |
 | `vault`         | Vault name                            |
-| `tags`          | Array of tags (without #)             |
+| `tags`          | Array of frontmatter tags (without #) |
+| `bodyTags`      | Array of tags in the note body (without #) |
 | `outgoingLinks` | Array of outgoing link targets        |
 | `headings`      | Array of heading texts                |
 | `content`       | Full file content (async)             |

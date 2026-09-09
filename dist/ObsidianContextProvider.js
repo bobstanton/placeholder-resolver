@@ -1,10 +1,10 @@
-import { normalizePath } from 'obsidian';
+import { normalizePath, parseFrontMatterTags } from 'obsidian';
 import { escapeHtml } from './helpers';
 const BUILT_IN_PROPERTIES = new Set([
     'path', 'folder', 'title', 'content', 'created', 'modified', 'size', 'extension', 'name',
     'today', 'now', 'year', 'month', 'day',
     'vault',
-    'outgoingLinks', 'tags', 'headings'
+    'outgoingLinks', 'tags', 'bodyTags', 'headings'
 ]);
 function stripMarkdownExtension(path) {
     return path.replace(/\.md$/, '');
@@ -78,6 +78,10 @@ export class ObsidianContextProvider {
                 return now.getDate();
             case 'vault':
                 return this.app.vault.getName();
+            case 'tags':
+                return this.getFrontmatterTags();
+            case 'bodyTags':
+                return this.getBodyTags();
         }
         if (!this.file) {
             return undefined;
@@ -101,8 +105,6 @@ export class ObsidianContextProvider {
                 return this.file.name;
             case 'outgoingLinks':
                 return this.getOutgoingLinks();
-            case 'tags':
-                return this.getTags();
             case 'headings':
                 return this.getHeadings();
             default:
@@ -127,7 +129,10 @@ export class ObsidianContextProvider {
         }
         return Array.from(paths);
     }
-    getTags() {
+    getFrontmatterTags() {
+        return (parseFrontMatterTags(this.metadata) ?? []).map(tag => tag.replace(/^#/, ''));
+    }
+    getBodyTags() {
         if (!this.cache?.tags)
             return [];
         return this.cache.tags.map(tag => tag.tag.replace(/^#/, ''));

@@ -35,7 +35,8 @@ export declare class ObsidianContextProvider implements ContextProvider {
     getLazyProperties(): Record<string, () => Promise<string> | string>;
     private getBuiltInProperty;
     private getOutgoingLinks;
-    private getTags;
+    private getFrontmatterTags;
+    private getBodyTags;
     private getHeadings;
     private getFolder;
     private ensureLoaded;
